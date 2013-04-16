@@ -24,13 +24,24 @@ class FeedsCSVParser extends FeedsParser {
     $parser->setDelimiter($delimiter);
 
     $iterator = new ParserCSVIterator($fetcher_result->getFilePath());
-    if (empty($source_config['no_headers'])) {
-      // Get first line and use it for column names, convert them to lower case.
+
+    // Process header.
+    if (!empty($source_config['header_size'])) {
+      $skip = $source_config['header_size'];
+      if (!empty($source_config['header_active']) && $source_config['header_active'] > 1) {
+        $this->parseItems($parser, $iterator, 0, $source_config['header_active'] - 1);
+        $parser->setStartByte($iterator->currentPos());
+
+        $skip -= $source_config['header_active'];
+      }
+
       $header = $this->parseHeader($parser, $iterator);
       if (!$header) {
         return;
       }
       $parser->setColumnNames($header);
+
+      $this->parseItems($parser, $iterator, $iterator->currentPos(), $skip);
     }
 
     // Determine section to parse, parse.
@@ -150,7 +161,39 @@ class FeedsCSVParser extends FeedsParser {
       '#description' => t('Check if the imported CSV file does not start with a header row. If checked, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
       '#default_value' => isset($source_config['no_headers']) ? $source_config['no_headers'] : 0,
     );
+
+    $form['header_size'] = array(
+      '#type' => 'select',
+      '#title' => t('Header size'),
+      '#description' => t('How many rows are the header.'),
+      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      '#default_value' => isset($source_config['header_size']) ? $source_config['header_size'] : $this->config['header_size'],
+    );
+    $form['header_active'] = array(
+      '#type' => 'select',
+      '#title' => t('Active header'),
+      '#description' => t('Which header to use. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
+      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      '#default_value' => $this->config['header_active'],
+      '#states' => array(
+        'invisible' => array(
+          ':input[name="feeds[FeedsCSVParser][header_size]"]' => array('value' => '0'),
+        ),
+      ),
+    );
+
     return $form;
+  }
+
+  /**
+   * Build configuration form validate.
+   */
+  public function sourceFormValidate(&$source_config) {
+    if ($source_config['header_size'] > 0 && ($source_config['header_active'] > $source_config['header_size'])) {
+      $message = t('Active header must be between 0 and %size', array('%size' => $source_config['header_size']));
+
+      form_set_error('header_active', $message);
+    }
   }
 
   /**
@@ -160,6 +203,8 @@ class FeedsCSVParser extends FeedsParser {
     return array(
       'delimiter' => ',',
       'no_headers' => 0,
+      'header_size' => 1,
+      'header_active' => 1,
     );
   }
 
@@ -168,6 +213,7 @@ class FeedsCSVParser extends FeedsParser {
    */
   public function configForm(&$form_state) {
     $form = array();
+
     $form['delimiter'] = array(
       '#type' => 'select',
       '#title' => t('Default delimiter'),
@@ -179,13 +225,39 @@ class FeedsCSVParser extends FeedsParser {
       ),
       '#default_value' => $this->config['delimiter'],
     );
-    $form['no_headers'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('No headers'),
-      '#description' => t('Check if the imported CSV file does not start with a header row. If checked, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
-      '#default_value' => $this->config['no_headers'],
+
+    $form['header_size'] = array(
+      '#type' => 'select',
+      '#title' => t('Header size'),
+      '#description' => t('How many rows the header is. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
+      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      '#default_value' => $this->config['header_size'],
     );
+    $form['header_active'] = array(
+      '#type' => 'select',
+      '#title' => t('Active header'),
+      '#description' => t('Which header to use. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
+      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+      '#default_value' => $this->config['header_active'],
+      '#states' => array(
+        'invisible' => array(
+          ':input[name="header_size"]' => array('value' => '0'),
+        ),
+      ),
+    );
+
     return $form;
+  }
+
+  /**
+   * Build configuration form validate.
+   */
+  public function configFormValidate($form_state) {
+    if ($form_state['header_size'] > 0 && ($form_state['header_active'] > $form_state['header_size'])) {
+      $message = t('Active header must be between 0 and %size', array('%size' => $form_state['header_size']));
+
+      form_set_error('header_active', $message);
+    }
   }
 
   public function getTemplate() {
