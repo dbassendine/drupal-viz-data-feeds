@@ -163,17 +163,15 @@ class FeedsCSVParser extends FeedsParser {
     );
 
     $form['header_size'] = array(
-      '#type' => 'select',
+      '#type' => 'textfield',
       '#title' => t('Header size'),
       '#description' => t('How many rows are the header.'),
-      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
       '#default_value' => isset($source_config['header_size']) ? $source_config['header_size'] : $this->config['header_size'],
     );
     $form['header_active'] = array(
-      '#type' => 'select',
+      '#type' => 'textfield',
       '#title' => t('Active header'),
       '#description' => t('Which header to use. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
-      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
       '#default_value' => $this->config['header_active'],
       '#states' => array(
         'invisible' => array(
@@ -227,17 +225,15 @@ class FeedsCSVParser extends FeedsParser {
     );
 
     $form['header_size'] = array(
-      '#type' => 'select',
+      '#type' => 'textfield',
       '#title' => t('Header size'),
       '#description' => t('How many rows the header is. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
-      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
       '#default_value' => $this->config['header_size'],
     );
     $form['header_active'] = array(
-      '#type' => 'select',
+      '#type' => 'textfield',
       '#title' => t('Active header'),
       '#description' => t('Which header to use. If 0, mapping sources must be named \'0\', \'1\', \'2\' etc.'),
-      '#options' => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
       '#default_value' => $this->config['header_active'],
       '#states' => array(
         'invisible' => array(
