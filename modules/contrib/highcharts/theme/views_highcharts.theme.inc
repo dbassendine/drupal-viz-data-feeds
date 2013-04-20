@@ -59,10 +59,13 @@ function template_preprocess_views_highcharts(&$vars) {
   $highcharts_config->xAxis->categories = array();
   foreach ($view->style_plugin->render_tokens as $result_index => $row) {
     foreach ($row as $field_name => $field) {
-		$f = str_replace(array('[',']'), "", $field_name);
-		if ($options['x_axis']['dataset_data'][$f]) {
-			$data[$f][] = (float)$field;
-		}
+      $check = str_split($field_name);
+      if ($check[0] !==  '%' && $check[0] !== '!') {
+        $f = str_replace(array('[',']'), '', $field_name);
+        if ($options['x_axis']['dataset_data'][$f]) {
+          $data[$f][] = (float)$field;
+        }
+      }
     }
 	if (!empty($options['x_axis']['dataset_label'])) {
 		$highcharts_config->xAxis->categories[] = $row["[".$options['x_axis']['dataset_label']."]"];		

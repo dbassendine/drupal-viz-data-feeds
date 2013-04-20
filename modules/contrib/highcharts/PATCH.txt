@@ -1,0 +1,7 @@
+Undefined index errors
+======================
+
+* Fixes undefined index errors, from contextual filter being erroneously pulled in
+* Issue: http://drupal.org/node/1529844
+* Patch: http://drupal.org/node/1529844, http://drupal.org/files/highcharts-undefined-index-1529844-11.patch
+
