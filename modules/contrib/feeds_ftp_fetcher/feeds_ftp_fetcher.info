@@ -1,0 +1,14 @@
+name = Feeds FTP Fetcher
+description = "A Feeds plugin that will fetch files from an FTP server"
+core = 7.x
+package = Feeds
+
+; Module dependencies
+dependencies[] = feeds
+
+; Information added by drupal.org packaging script on 2013-02-26
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "feeds_ftp_fetcher"
+datestamp = "1361840200"
+
