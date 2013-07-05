@@ -1,0 +1,4 @@
+<?php
+function gvs_uninstall() {
+  variable_del('gvs_api_key');
+}

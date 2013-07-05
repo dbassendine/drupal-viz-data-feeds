@@ -1,0 +1,23 @@
+name = Google Visualization Style
+description = Views3 Style for Google Visualization
+core = 7.x
+package = Data visualization
+dependencies[] = views
+configure = admin/config/system/gvs
+
+files[] = gvs.module
+files[] = gvs.views.inc
+files[] = gvs-view-gvs.tpl.php
+files[] = gvs_plugin_style_gvs.inc
+files[] = gvs.views.inc
+files[] = gvs.theme.inc
+
+
+
+
+; Information added by drupal.org packaging script on 2011-03-30
+version = "7.x-1.0-rc2"
+core = "7.x"
+project = "gvs"
+datestamp = "1301491567"
+
