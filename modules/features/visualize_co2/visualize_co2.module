@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Visualize CO2 feature.
+ */
+
+include_once 'visualize_co2.features.inc';
