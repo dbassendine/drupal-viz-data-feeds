@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Visualize Sea Ice feature.
+ */
+
+include_once 'visualize_sea_ice.features.inc';
