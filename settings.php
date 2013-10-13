@@ -213,7 +213,7 @@
 $databases = array();
 $databases['default']['default'] = array(
   'driver' => 'mysql',
-  'database' => 'drupal7_demo_datastream',
+  'database' => 'drupal7_demo_datafeeds',
   'username' => 'root',
   'password' => 'akarenin',
   'host' => 'localhost',
