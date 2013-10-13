@@ -2,6 +2,7 @@ name = Visualize Weather Multivariable
 description = Import feed, content type and visualization views
 core = 7.x
 package = Features
+php = 5.2.4
 version = 7.x-1.0
 project = visualize_weather_multivar_california
 dependencies[] = ctools
