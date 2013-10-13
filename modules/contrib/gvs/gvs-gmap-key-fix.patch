@@ -1,0 +1,16 @@
+diff --git a/modules/contrib/gvs/gvs.theme.inc b/modules/contrib/gvs/gvs.theme.inc
+index d992e28..ac662ed 100644
+--- a/modules/contrib/gvs/gvs.theme.inc
++++ b/modules/contrib/gvs/gvs.theme.inc
+@@ -828,8 +828,9 @@ function template_preprocess_gvs_view_gvs(&$vars) {
+       $gvs_gmap_gapi="http://maps.google.com/maps?file=api&v=2&key=" . $api_key;
+       drupal_add_js($gvs_gmap_gapi,'external');
+     }
+-    else
+-      drupal_set_message('Enter Google maps key in Gmap settings','error');
++    // Erroneously asks for API key
++    //else
++      // drupal_set_message('Enter Google maps key in Gmap settings','error');
+ 
+   if ($vars['options']['type']=='11')
+     if ($api_key) {

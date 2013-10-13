@@ -1,0 +1,4 @@
+Google Maps key fix
+===================
+- Asks for a Google Maps keys when it's not required
+- Comment this out temporarily
