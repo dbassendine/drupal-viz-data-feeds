@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Visualize Weather Multivariable feature.
+ */
+
+include_once 'visualize_weather_multivar_california.features.inc';
