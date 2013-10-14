@@ -466,11 +466,8 @@ function template_preprocess_gvs_view_gvs(&$vars) {
       }
       $strdata .= "data.addRows(" . $no_of_rows . ");";
       for ($j=0;$j<$no_of_rows;$j++) {
-        $xfield=$view->field[$vars['options']['xaxis']]->real_field;
-        $xvalue=strip_tags($view->style_plugin->rendered_fields[$j][$xfield]);
-
-        $yfield=$view->field[$vars['options']['yaxis1_1']]->real_field;
-        $yvalue=strip_tags($view->style_plugin->rendered_fields[$j][$yfield]);
+        $xvalue=strip_tags($view->style_plugin->rendered_fields[$j][$vars['options']['xaxis']]);
+        $yvalue=strip_tags($view->style_plugin->rendered_fields[$j][$vars['options']['yaxis1_1']]);
 
         $strdata .= "data.setValue(" . $j . ", 0," . (is_null($xvalue)?'undefined':"'" .  str_replace("'","`",strip_tags($xvalue)) . "'") . ");";
 
