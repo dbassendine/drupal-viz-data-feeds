@@ -1,0 +1,63 @@
+diff --git a/modules/contrib/gvs/gvs.theme.inc b/modules/contrib/gvs/gvs.theme.inc
+index 4786137..53303a9 100644
+--- a/modules/contrib/gvs/gvs.theme.inc
++++ b/modules/contrib/gvs/gvs.theme.inc
+@@ -475,14 +475,17 @@ function template_preprocess_gvs_view_gvs(&$vars) {
+           $strdata .= "data.setValue(" . $j . ", 1, undefined);";
+         else {
+ 			switch ($vars['options']['mcdateformat']){
++                                // Date (Y-m-d)
+ 				case '1':
+ 					$yvaluedate = strtotime($yvalue);
+ 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));
+ 					if ($yvaluedate === FALSE)
+ 						$strdata .= "data.setValue(" . $j . ", 1, undefined);";
+ 					else
+-						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)-1) . "," . date('d', $yvaluedate) . "));";
++						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)) . "," . date('d', $yvaluedate) . "));";
+ 				break;
++
++                                // Year
+ 				case '2':
+ 					$yvaluedate = strtotime($yvalue);
+ 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));
+@@ -491,6 +494,8 @@ function template_preprocess_gvs_view_gvs(&$vars) {
+ 					else
+ 						$strdata .= "data.setValue(" . $j . ", 1,". date('Y', $yvaluedate) .");";
+ 					break;
++
++                                // Week number
+ 				case '3':
+ 					$yvaluedate = strtotime($yvalue);
+ 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));					
+@@ -499,6 +504,8 @@ function template_preprocess_gvs_view_gvs(&$vars) {
+ 					else
+ 						$strdata .= "data.setValue(" . $j . ", 1,'". date('Y', $yvaluedate)."W".date('W', $yvaluedate)."');";
+ 					break;
++
++                                // Quarter
+ 				case '4':
+ 					if (preg_match("/^(\d{4})Q(\d{1})$/", $yvalue,$aaa)){
+ 						$yvaluedate = strtotime($aaa[1]."W".($aaa[2]-1)*15+1);
+diff --git a/modules/contrib/gvs/gvs_plugin_style_gvs.inc b/modules/contrib/gvs/gvs_plugin_style_gvs.inc
+index b5d7f9a..56deead 100644
+--- a/modules/contrib/gvs/gvs_plugin_style_gvs.inc
++++ b/modules/contrib/gvs/gvs_plugin_style_gvs.inc
+@@ -415,7 +415,7 @@ class gvs_plugin_style_gvs extends views_plugin_style {
+ 
+     $form['yaxis1_1'] = array(
+         '#title' => t('Date'),
+-        '#description' => t('Must be DATE'),
++        '#description' => t('Must be DATE (select correct date format below).'),
+         '#type' => 'select',
+         //'#options' => $date_fields,
+ 		'#options' => $field_names,
+@@ -1771,7 +1771,7 @@ class gvs_plugin_style_gvs extends views_plugin_style {
+         '#title' => t('Date format'),
+         '#type' => 'select',
+         '#options' => array(
+-			'1' => t('Date (m-d-Y)'),
++			'1' => t('Date (Y-m-d)'),
+ 			'2' => t('Year'),
+ 			'3' => t('Week number'),
+ 			'4' => t('Quarter'),

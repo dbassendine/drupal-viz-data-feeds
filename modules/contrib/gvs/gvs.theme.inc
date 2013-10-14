@@ -475,14 +475,17 @@ function template_preprocess_gvs_view_gvs(&$vars) {
           $strdata .= "data.setValue(" . $j . ", 1, undefined);";
         else {
 			switch ($vars['options']['mcdateformat']){
+                                // Date (Y-m-d)
 				case '1':
 					$yvaluedate = strtotime($yvalue);
 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));
 					if ($yvaluedate === FALSE)
 						$strdata .= "data.setValue(" . $j . ", 1, undefined);";
 					else
-						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)-1) . "," . date('d', $yvaluedate) . "));";
+						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)) . "," . date('d', $yvaluedate) . "));";
 				break;
+
+                                // Year
 				case '2':
 					$yvaluedate = strtotime($yvalue);
 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));
@@ -491,6 +494,8 @@ function template_preprocess_gvs_view_gvs(&$vars) {
 					else
 						$strdata .= "data.setValue(" . $j . ", 1,". date('Y', $yvaluedate) .");";
 					break;
+
+                                // Week number
 				case '3':
 					$yvaluedate = strtotime($yvalue);
 					if ($yvaluedate === FALSE) $yvaluedate=strtotime(date("Y-m-d H:i:s",$yvalue));					
@@ -499,6 +504,8 @@ function template_preprocess_gvs_view_gvs(&$vars) {
 					else
 						$strdata .= "data.setValue(" . $j . ", 1,'". date('Y', $yvaluedate)."W".date('W', $yvaluedate)."');";
 					break;
+
+                                // Quarter
 				case '4':
 					if (preg_match("/^(\d{4})Q(\d{1})$/", $yvalue,$aaa)){
 						$yvaluedate = strtotime($aaa[1]."W".($aaa[2]-1)*15+1);
