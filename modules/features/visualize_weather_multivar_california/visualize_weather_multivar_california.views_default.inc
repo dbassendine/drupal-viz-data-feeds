@@ -268,8 +268,8 @@ Source (fusion table): http://goo.gl/O7yEQ
   $handler->display->display_options['style_plugin'] = 'gvs';
   $handler->display->display_options['style_options']['title'] = '';
   $handler->display->display_options['style_options']['type'] = '9';
-  $handler->display->display_options['style_options']['width'] = '1200';
-  $handler->display->display_options['style_options']['height'] = '750';
+  $handler->display->display_options['style_options']['width'] = '750';
+  $handler->display->display_options['style_options']['height'] = '350';
   $handler->display->display_options['style_options']['chartAreaL'] = '100';
   $handler->display->display_options['style_options']['chartAreaT'] = '50';
   $handler->display->display_options['style_options']['emlink'] = 1;
