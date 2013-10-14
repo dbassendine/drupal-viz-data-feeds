@@ -52,7 +52,7 @@ function gvs_menu() {
 /**
 * GVS settings form
 */
-function gvs_admin_settings(&$form_state) {
+function gvs_admin_settings($form, &$form_state) {
   // if Google map api key exists use it
   if (!module_exists('keys_api')) {
     $form['dv_api_key'] = array(

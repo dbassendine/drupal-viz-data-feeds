@@ -2,3 +2,10 @@ Google Maps key fix
 ===================
 - Asks for a Google Maps keys when it's not required
 - Comment this out temporarily
+
+Fix admin form
+==============
+- Form definition function did not have $form as first parameter
+- Issue: https://drupal.org/node/1802146
+- Patch: https://drupal.org/node/1802146#comment-7964763
+- Patch file: https://drupal.org/files/gvs-admin_form_fix-1802146-0.patch
