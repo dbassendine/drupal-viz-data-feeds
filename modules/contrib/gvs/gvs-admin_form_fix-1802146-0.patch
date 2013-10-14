@@ -1,0 +1,13 @@
+diff --git a/modules/contrib/gvs/gvs.module b/modules/contrib/gvs/gvs.module
+index a435449..6a8c91e 100644
+--- a/modules/contrib/gvs/gvs.module
++++ b/modules/contrib/gvs/gvs.module
+@@ -52,7 +52,7 @@ function gvs_menu() {
+ /**
+ * GVS settings form
+ */
+-function gvs_admin_settings(&$form_state) {
++function gvs_admin_settings($form, &$form_state) {
+   // if Google map api key exists use it
+   if (!module_exists('keys_api')) {
+     $form['dv_api_key'] = array(
