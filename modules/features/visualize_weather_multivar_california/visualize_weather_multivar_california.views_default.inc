@@ -304,6 +304,7 @@ Source (fusion table): http://goo.gl/O7yEQ
   $handler->display->display_options['style_options']['showXScalePicker'] = 0;
   $handler->display->display_options['style_options']['showYScalePicker'] = 0;
   $handler->display->display_options['style_options']['showAdvancedPanel'] = 0;
+  $handler->display->display_options['style_options']['state'] = '{"yAxisOption":"3","showTrails":false,"nonSelectedAlpha":0.4,"orderedByY":false,"iconType":"BUBBLE","iconKeySettings":[],"time":"2009-12-01","yZoomedDataMax":106.2,"xZoomedDataMax":81.4,"xAxisOption":"2","duration":{"multiplier":1,"timeUnit":"D"},"xLambda":1,"playDuration":15000,"dimensions":{"iconDimensions":["dim0"]},"uniColorForNonSelected":false,"yZoomedDataMin":45.1,"xZoomedIn":false,"yLambda":1,"xZoomedDataMin":24.5,"sizeOption":"4","colorOption":"_UNICOLOR","yZoomedIn":false,"orderedByX":false}';
   $handler->display->display_options['style_options']['enableScrollWheel'] = 0;
   $handler->display->display_options['style_options']['showTipMap'] = 0;
   $handler->display->display_options['style_options']['showLineMap'] = 0;
