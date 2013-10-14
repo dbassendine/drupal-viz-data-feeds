@@ -16,7 +16,5 @@ Motion chart, date months and days mixed up
 - PHP's strtotime (line 487) assumes a date with "-" separator in eu format d-m-Y (see http://goo.gl/SKwnF)
 - but configuration asks for m-d-Y format, so months and days are mixed up
 - so: use Y-m-d format instead, update documentation to match
-- Patch: gvs-date_fixes.patch
-
-
-
+- Patch issue: https://drupal.org/node/2111833#comment-7965747
+- Patch file: https://drupal.org/files/gvs-date_fixes-2111833-0.patch
