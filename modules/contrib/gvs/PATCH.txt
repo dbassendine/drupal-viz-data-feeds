@@ -4,3 +4,8 @@ Fix admin form
 - Issue: https://drupal.org/node/1802146
 - Patch: https://drupal.org/node/1802146#comment-7964763
 - Patch file: https://drupal.org/files/gvs-admin_form_fix-1802146-0.patch
+
+Motion chart, fix field names so data is passed through correctly
+=================================================================
+- Previously, looked up the the "real" field name, returning eg. field_date_value, but this no longer matches $view->style_plugin->rendered_fields[$j] lookup, which is now using eg. field_date. So remove "real" name lookup, pass in field_date directly rather than field_date_value.
+- Patch: gvs-xy_field_names_fix.patch 
