@@ -150,7 +150,7 @@ Source (fusion table): http://goo.gl/O7yEQ
   /* Display: Page: Highchart */
   $handler = $view->new_display('page', 'Page: Highchart', 'page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Weather Multivariable 2009 (Highcharts)';
+  $handler->display->display_options['title'] = 'Western US Weather in WA, CA and AZ in 2009 (Highcharts)';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'highcharts';
@@ -181,7 +181,7 @@ Source (fusion table): http://goo.gl/O7yEQ
   /* Display: Page: Flot */
   $handler = $view->new_display('page', 'Page: Flot', 'page_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Weather Multivariable 2009 (Flot)';
+  $handler->display->display_options['title'] = 'Western US Weather in WA, CA and AZ in 2009 (Flot)';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'flot_fields';
@@ -262,7 +262,7 @@ Source (fusion table): http://goo.gl/O7yEQ
   /* Display: Page: GVS Motion */
   $handler = $view->new_display('page', 'Page: GVS Motion', 'page_2');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Weather Multivariable 2009 (Google Column)';
+  $handler->display->display_options['title'] = 'Western US Weather in WA, CA and AZ in 2009 (Google Motion)';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'gvs';
@@ -326,7 +326,7 @@ Source (fusion table): http://goo.gl/O7yEQ
   /* Display: Admin */
   $handler = $view->new_display('page', 'Admin', 'page_4');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Weather station Min/Max Temperature and Precipitation (View table)';
+  $handler->display->display_options['title'] = 'Western US Weather in WA, CA and AZ in 2009 (View table)';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['path'] = 'weather/table';
   $export['vis_weather_multi_california'] = $view;
