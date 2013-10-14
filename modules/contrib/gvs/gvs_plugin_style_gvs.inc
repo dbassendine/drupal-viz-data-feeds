@@ -415,7 +415,7 @@ class gvs_plugin_style_gvs extends views_plugin_style {
 
     $form['yaxis1_1'] = array(
         '#title' => t('Date'),
-        '#description' => t('Must be DATE (select correct date format below).'),
+        '#description' => t('Must be DATE (use Y-m-d format, or select alternative below).'),
         '#type' => 'select',
         //'#options' => $date_fields,
 		'#options' => $field_names,

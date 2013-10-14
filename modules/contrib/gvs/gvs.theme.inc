@@ -482,7 +482,7 @@ function template_preprocess_gvs_view_gvs(&$vars) {
 					if ($yvaluedate === FALSE)
 						$strdata .= "data.setValue(" . $j . ", 1, undefined);";
 					else
-						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)) . "," . date('d', $yvaluedate) . "));";
+						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)-1) . "," . date('d', $yvaluedate) . "));";
 				break;
 
                                 // Year

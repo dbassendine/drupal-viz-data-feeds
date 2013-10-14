@@ -8,18 +8,15 @@ Fix admin form
 Motion chart, fix field names so data is passed through correctly
 =================================================================
 - Previously, looked up the the "real" field name, returning eg. field_date_value, but this no longer matches $view->style_plugin->rendered_fields[$j] lookup, which is now using eg. field_date. So remove "real" name lookup, pass in field_date directly rather than field_date_value.
-- Patch: gvs-xy_field_names_fix.patch 
+- Patch issue: https://drupal.org/node/2111821#comment-7965691
+- Patch file: https://drupal.org/files/gvs-xy_field_names_fix-2111821.patch 
 
-Motion chart, date fixes
-========================
-- Patch: gvs-date_fixes.patch
-#1 - Month and days mixed up
+Motion chart, date months and days mixed up
+===========================================
 - PHP's strtotime (line 487) assumes a date with "-" separator in eu format d-m-Y (see http://goo.gl/SKwnF)
 - but configuration asks for m-d-Y format, so months and days are mixed up
 - so: use Y-m-d format instead, update documentation to match
-#2 - Month minus one
-- For an unknown reason, the month is reduced by one on line 485
-- Removed
+- Patch: gvs-date_fixes.patch
 
 
 

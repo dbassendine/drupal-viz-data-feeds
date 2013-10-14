@@ -13,8 +13,7 @@ index 4786137..53303a9 100644
  					if ($yvaluedate === FALSE)
  						$strdata .= "data.setValue(" . $j . ", 1, undefined);";
  					else
--						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)-1) . "," . date('d', $yvaluedate) . "));";
-+						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)) . "," . date('d', $yvaluedate) . "));";
+						$strdata .= "data.setValue(" . $j . ", 1, new Date (" . date('Y', $yvaluedate) . "," . (date('m', $yvaluedate)-1) . "," . date('d', $yvaluedate) . "));";
  				break;
 +
 +                                // Year
@@ -48,7 +47,7 @@ index b5d7f9a..56deead 100644
      $form['yaxis1_1'] = array(
          '#title' => t('Date'),
 -        '#description' => t('Must be DATE'),
-+        '#description' => t('Must be DATE (select correct date format below).'),
++        '#description' => t('Must be DATE (use Y-m-d format, or select alternative below).'),
          '#type' => 'select',
          //'#options' => $date_fields,
  		'#options' => $field_names,
