@@ -517,16 +517,14 @@ function template_preprocess_gvs_view_gvs(&$vars) {
         $jjj=2;
         for ($jj=2;$jj<21;$jj++) {
           if ($vars['options']['yaxis' . $jj]!='') {
-            $yfield=$view->field[$vars['options']['yaxis' . $jj]]->real_field;
-            $yvalue=strip_tags($view->style_plugin->rendered_fields[$j][$yfield]);
+            $yvalue=strip_tags($view->style_plugin->rendered_fields[$j][$vars['options']['yaxis' . $jj]]);
             $strdata .= "data.setValue(" . $j . ", " . $jjj . ", " . (is_null($yvalue)?'undefined':$yvalue) . ");";
             $jjj++;
           }
         }
         for ($jj=2;$jj<21;$jj++) {
           if ($vars['options']['zaxis' . $jj]!='') {
-            $zfield=$view->field[$vars['options']['zaxis' . $jj]]->real_field;
-            $zvalue=strip_tags($view->style_plugin->rendered_fields[$j][$zfield]);
+            $zvalue=strip_tags($view->style_plugin->rendered_fields[$j][$vars['options']['zaxis' . $jj]]);
             $strdata .= "data.setValue(" . $j . ", " . $jjj . ", " . (is_null($zvalue)?'undefined':"'" .  str_replace("'","`",$zvalue) . "'") . ");";
             $jjj++;
           }
