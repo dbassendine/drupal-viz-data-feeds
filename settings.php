@@ -210,15 +210,17 @@
  *   );
  * @endcode
  */
+/*
 $databases = array();
 $databases['default']['default'] = array(
   'driver' => 'mysql',
-  'database' => 'drupal7_demo_datafeeds',
-  'username' => 'root',
-  'password' => 'akarenin',
+  'database' => '',
+  'username' => '',
+  'password' => '',
   'host' => 'localhost',
   'prefix' => '',
 );
+*/
 
 /**
  * Access control for update.php script.
